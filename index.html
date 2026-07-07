@@ -19,13 +19,13 @@ body {
 #top-gradient {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100vw;
-    height: 18vh;
+    left: 38vw;
+    width: 62vw;
+    height: 58vh;
     display: block;
     z-index: 0;
     pointer-events: none;
-    background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 45%, rgba(0,0,0,0) 100%);
+    background: radial-gradient(ellipse 90% 100% at 50% 0%, #000000 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0.4) 65%, rgba(0,0,0,0) 100%);
 }
 
 .site-header {
@@ -388,30 +388,39 @@ body {
 .video-container {
     position: fixed;
     bottom: 0;
-    left: 0;
-    width: 100vw;
+    left: 38vw;
+    width: 62vw;
     height: 90vh;
     overflow: hidden;
     z-index: -1;
 }
+.video-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0) 82%, rgba(0,0,0,0.35) 100%),
+        radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.3) 100%);
+}
 .video-fade-left {
     position: fixed;
     bottom: 0;
-    left: 0;
-    width: 100vw;
+    left: 28vw;
+    width: 42vw;
     height: 90vh;
     z-index: 0;
     pointer-events: none;
     background: linear-gradient(to right,
         #000000 0%,
-        #000000 36%,
-        rgba(0,0,0,0.85) 42%,
-        rgba(0,0,0,0.62) 48%,
-        rgba(0,0,0,0.4) 54%,
-        rgba(0,0,0,0.22) 60%,
-        rgba(0,0,0,0.1) 66%,
-        rgba(0,0,0,0.03) 72%,
-        rgba(0,0,0,0) 78%);
+        #000000 12%,
+        rgba(0,0,0,0.95) 24%,
+        rgba(0,0,0,0.82) 36%,
+        rgba(0,0,0,0.6) 50%,
+        rgba(0,0,0,0.38) 63%,
+        rgba(0,0,0,0.18) 78%,
+        rgba(0,0,0,0.06) 90%,
+        rgba(0,0,0,0) 100%);
 }
 #bg-video {
     width: 100%;

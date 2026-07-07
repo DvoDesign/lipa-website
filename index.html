@@ -394,15 +394,33 @@ body {
     overflow: hidden;
     z-index: -1;
 }
+.video-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0) 82%, rgba(0,0,0,0.35) 100%),
+        radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.3) 100%);
+}
 .video-fade-left {
     position: fixed;
     bottom: 0;
-    left: 38vw;
-    width: 24vw;
+    left: 28vw;
+    width: 42vw;
     height: 90vh;
     z-index: 0;
     pointer-events: none;
-    background: linear-gradient(to right, #000000 0%, rgba(0,0,0,0.92) 30%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(to right,
+        #000000 0%,
+        #000000 12%,
+        rgba(0,0,0,0.95) 24%,
+        rgba(0,0,0,0.82) 36%,
+        rgba(0,0,0,0.6) 50%,
+        rgba(0,0,0,0.38) 63%,
+        rgba(0,0,0,0.18) 78%,
+        rgba(0,0,0,0.06) 90%,
+        rgba(0,0,0,0) 100%);
 }
 #bg-video {
     width: 100%;

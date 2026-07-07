@@ -19,8 +19,8 @@ body {
 #top-gradient {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100vw;
+    left: 38vw;
+    width: 62vw;
     height: 58vh;
     display: block;
     z-index: 0;
@@ -117,7 +117,7 @@ body {
     text-align: left;
     padding: 9rem 3rem 0;
     width: 100%;
-    max-width: 620px;
+    max-width: 480px;
 }
 
 .hero-title {
@@ -245,7 +245,7 @@ body {
 
 .footer-container {
     position: fixed;
-    bottom: 20px;
+    bottom: 24px;
     left: 20px;
     right: 20px;
     width: calc(100vw - 40px);
@@ -388,11 +388,21 @@ body {
 .video-container {
     position: fixed;
     bottom: 0;
-    left: 0;
-    width: 100vw;
+    left: 38vw;
+    width: 62vw;
     height: 90vh;
     overflow: hidden;
     z-index: -1;
+}
+.video-fade-left {
+    position: fixed;
+    bottom: 0;
+    left: 38vw;
+    width: 24vw;
+    height: 90vh;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(to right, #000000 0%, rgba(0,0,0,0.92) 30%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0) 100%);
 }
 #bg-video {
     width: 100%;
@@ -502,10 +512,7 @@ body {
     </button>
 </main>
 
-<div class="scroll-hint">
-    <span class="mouse-icon"><span class="mouse-wheel"></span></span>
-    Листайте вниз
-</div>
+
 
 <footer class="footer-container">
     <div class="footer-top">
@@ -541,16 +548,13 @@ body {
     </div>
 </footer>
 
-<div class="footer-logo-wrap">
-    <h2 class="footer-logo-text">LipaGroup</h2>
-</div>
-
 <div class="video-container">
     <video autoplay muted playsinline loop id="bg-video">
         <source src="video.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
     </video>
 </div>
+<div class="video-fade-left"></div>
 
 <div id="cursor-ring" class="cursor-ring-outline"></div>
 

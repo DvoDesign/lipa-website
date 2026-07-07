@@ -21,11 +21,91 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 45vh;
+    height: 58vh;
     display: block;
     z-index: 0;
     pointer-events: none;
     background: radial-gradient(ellipse 90% 100% at 50% 0%, #000000 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0.4) 65%, rgba(0,0,0,0) 100%);
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.8rem 3rem;
+    font-family: 'Outfit', sans-serif;
+}
+.logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+.logo-main {
+    font-family: 'General Sans', -apple-system, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+}
+.logo-sub {
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 3px;
+}
+.nav-links {
+    display: flex;
+    gap: 2.4rem;
+}
+.nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+.nav-links a:hover {
+    opacity: 0.65;
+}
+.menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 9999px;
+    padding: 0.55rem 1.2rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.menu-btn:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 3px);
+    grid-template-rows: repeat(3, 3px);
+    gap: 2px;
+}
+.menu-grid span {
+    width: 3px;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 1px;
 }
 
 .hero-content {
@@ -33,23 +113,112 @@ body {
     z-index: 2;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-top: 6vh;
-    width: 95%;
-    max-width: 1100px;
-    margin: 0 auto;
+    align-items: flex-start;
+    text-align: left;
+    padding: 9rem 3rem 0;
+    width: 100%;
+    max-width: 620px;
 }
 
 .hero-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 2.8rem;
-    font-weight: 400;
+    font-family: 'General Sans', -apple-system, sans-serif;
+    font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+    font-weight: 500;
     color: #ffffff;
-    line-height: 1.15;
-    margin-bottom: 2.2rem;
-    letter-spacing: -0.015em;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
     text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.02em;
+    margin-top: 1.4rem;
+}
+.hero-subtitle .dot {
+    margin: 0 0.5rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.hero-cta {
+    margin-top: 2.2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #39FF14;
+    color: #000000;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.4rem 0.4rem 0.4rem 1.6rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 25px rgba(57, 255, 20, 0.25);
+}
+.hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(57, 255, 20, 0.4);
+}
+.hero-cta:active {
+    transform: translateY(0);
+}
+.cta-icon {
+    width: 2.1rem;
+    height: 2.1rem;
+    background-color: #000000;
+    color: #39FF14;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.scroll-hint {
+    position: fixed;
+    bottom: 53vh;
+    left: 3rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.02em;
+}
+.mouse-icon {
+    width: 18px;
+    height: 28px;
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    border-radius: 9999px;
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+}
+.mouse-wheel {
+    width: 3px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 9999px;
+    animation: mouse-scroll 1.6s infinite ease-in-out;
+}
+@keyframes mouse-scroll {
+    0%   { transform: translateY(0); opacity: 1; }
+    60%  { transform: translateY(6px); opacity: 0.3; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.hero-title .word-inner.accent {
+    color: #39FF14;
+    text-shadow: 0 0 20px rgba(57, 255, 20, 0.45);
 }
 
 .hero-title .word-wrapper {
@@ -72,68 +241,7 @@ body {
     100% { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
-.hero-btn {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    color: #ffffff;
-    background-color: #000000;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    padding: 1.3rem 2.5rem;
-    border-radius: 9999px;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
-    outline: none;
-}
-.hero-btn:hover {
-    background-color: #ffffff;
-    color: #000000;
-    border-color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
-}
-.hero-btn:active {
-    transform: translateY(0);
-}
 
-.blinking-dot {
-    width: 10px;
-    height: 10px;
-    background-color: #39FF14;
-    border-radius: 50%;
-    position: relative;
-    display: inline-block;
-    animation: pulse-glow 2s infinite ease-in-out;
-}
-.blinking-dot::after {
-    content: '';
-    position: absolute;
-    top: -5px; left: -5px; right: -5px; bottom: -5px;
-    background-color: rgba(57, 255, 20, 0.45);
-    border-radius: 50%;
-    animation: wave-expand 2s infinite ease-in-out;
-}
-@keyframes pulse-glow {
-    0%, 100% {
-        opacity: 0.5;
-        transform: scale(0.85);
-        box-shadow: 0 0 4px rgba(57, 255, 20, 0.3);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.1);
-        box-shadow: 0 0 12px rgba(57, 255, 20, 0.9);
-    }
-}
-@keyframes wave-expand {
-    0%   { transform: scale(0.6); opacity: 0.9; }
-    100% { transform: scale(2.3); opacity: 0; }
-}
 
 .footer-container {
     position: fixed;
@@ -362,13 +470,43 @@ body {
 
 <div id="top-gradient"></div>
 
+<header class="site-header">
+    <div class="logo">
+        <span class="logo-main">LIPA</span>
+        <span class="logo-sub">GROUP</span>
+    </div>
+    <nav class="nav-links">
+        <a href="#">Продукция</a>
+        <a href="#">Производство</a>
+        <a href="#">Решения</a>
+        <a href="#">О компании</a>
+        <a href="#">Контакты</a>
+    </nav>
+    <button class="menu-btn">
+        Меню
+        <span class="menu-grid">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+        </span>
+    </button>
+</header>
+
 <main class="hero-content">
-    <h1 class="hero-title">High-converting digital products <br> for your business</h1>
-    <button class="hero-btn">
-        <span class="btn-text">Book a demo</span>
-        <span class="blinking-dot"></span>
+    <h1 class="hero-title">Производство <br> полного цикла <br> для брендов, <br> которым {{важен}} <br> {{результат}}</h1>
+    <p class="hero-subtitle">Полиграфия <span class="dot">•</span> Упаковка <span class="dot">•</span> Швейное производство</p>
+    <button class="hero-cta">
+        <span>Начать экскурсию</span>
+        <span class="cta-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </span>
     </button>
 </main>
+
+<div class="scroll-hint">
+    <span class="mouse-icon"><span class="mouse-wheel"></span></span>
+    Листайте вниз
+</div>
 
 <footer class="footer-container">
     <div class="footer-top">
@@ -462,7 +600,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const inner = document.createElement('span');
                 inner.className = 'word-inner';
-                inner.textContent = part;
+
+                const accentMatch = part.match(/^\{\{(.+)\}\}$/);
+                if (accentMatch) {
+                    inner.textContent = accentMatch[1];
+                    inner.classList.add('accent');
+                } else {
+                    inner.textContent = part;
+                }
 
                 inner.style.animationDelay = `${wordIndex * 0.1}s`;
                 wordIndex++;
@@ -520,7 +665,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        const heroBtn = document.querySelector('.hero-btn');
+        const heroBtn = document.querySelector('.hero-cta');
         if (heroBtn) {
             heroBtn.addEventListener('mouseenter', () => {
                 isHoveringBtn = true;

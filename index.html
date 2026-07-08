@@ -17,10 +17,21 @@ body {
     position: relative;
 }
 
+.hero-wrapper {
+    position: relative;
+    height: 200vh;
+}
+.hero-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
 
 
 .site-header {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -100,7 +111,7 @@ body {
 }
 
 .hero-content {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 3rem;
     transform: translateY(-50%);
@@ -266,7 +277,7 @@ body {
 
 
 .footer-container {
-    position: fixed;
+    position: absolute;
     bottom: 24px;
     left: 20px;
     right: 20px;
@@ -408,7 +419,7 @@ body {
 }
 
 .video-container {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100vw;
@@ -417,7 +428,7 @@ body {
     z-index: -1;
 }
 .video-fade-left {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100vw;
@@ -513,7 +524,6 @@ body {
 /* ===== Product section (02) ===== */
 .product-section {
     position: relative;
-    margin-top: 100vh;
     min-height: 100vh;
     background-color: #000000;
     overflow: hidden;
@@ -714,7 +724,8 @@ body {
 </head>
 <body>
 
-
+<div class="hero-wrapper">
+<div class="hero-sticky">
 
 <header class="site-header">
     <div class="logo">
@@ -789,6 +800,9 @@ body {
     </video>
 </div>
 <div class="video-fade-left"></div>
+
+</div>
+</div>
 
 <div id="cursor-ring" class="cursor-ring-outline"></div>
 

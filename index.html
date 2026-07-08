@@ -854,18 +854,23 @@ body {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // Видео стоит на паузе и воспроизводится только во время скролла
+    // Видео "скраббится" по скроллу: вниз — вперёд, вверх — назад
     const bgVideo = document.getElementById('bg-video');
     if (bgVideo) {
         bgVideo.pause();
-        let scrollPauseTimer = null;
+        let lastScrollY = window.scrollY;
+        const scrubSecondsPerPixel = 0.0025;
 
         window.addEventListener('scroll', () => {
-            bgVideo.play().catch(() => {});
-            clearTimeout(scrollPauseTimer);
-            scrollPauseTimer = setTimeout(() => {
-                bgVideo.pause();
-            }, 150);
+            if (!bgVideo.duration || isNaN(bgVideo.duration)) return;
+
+            const currentScrollY = window.scrollY;
+            const delta = currentScrollY - lastScrollY;
+            lastScrollY = currentScrollY;
+
+            let newTime = bgVideo.currentTime + delta * scrubSecondsPerPixel;
+            newTime = Math.max(0, Math.min(bgVideo.duration, newTime));
+            bgVideo.currentTime = newTime;
         }, { passive: true });
     }
 

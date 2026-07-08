@@ -582,7 +582,7 @@ body {
 </footer>
 
 <div class="video-container">
-    <video autoplay muted playsinline loop id="bg-video">
+    <video muted playsinline loop id="bg-video">
         <source src="video.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
     </video>
@@ -597,6 +597,21 @@ body {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    // Видео стоит на паузе и воспроизводится только во время скролла
+    const bgVideo = document.getElementById('bg-video');
+    if (bgVideo) {
+        bgVideo.pause();
+        let scrollPauseTimer = null;
+
+        window.addEventListener('scroll', () => {
+            bgVideo.play().catch(() => {});
+            clearTimeout(scrollPauseTimer);
+            scrollPauseTimer = setTimeout(() => {
+                bgVideo.pause();
+            }, 150);
+        }, { passive: true });
+    }
+
     const logoText = document.querySelector('.footer-logo-text');
 
     if (logoText) {

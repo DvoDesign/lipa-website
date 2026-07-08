@@ -26,6 +26,8 @@ body {
     top: 0;
     height: 100vh;
     overflow: hidden;
+    transform-origin: center center;
+    will-change: transform, border-radius;
 }
 
 
@@ -854,6 +856,31 @@ body {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    // Перед тем как первый экран отклеится и уедет — сворачиваем его в карточку со скруглёнными углами
+    const heroSticky = document.querySelector('.hero-sticky');
+    const heroWrapper = document.querySelector('.hero-wrapper');
+    if (heroSticky && heroWrapper) {
+        const maxRadius = 36; // px
+        const maxShrink = 0.06; // насколько уменьшается масштаб к концу
+
+        const applyCardEffect = () => {
+            const stickyHeight = window.innerHeight;
+            const totalRange = heroWrapper.offsetHeight - stickyHeight;
+            const progress = totalRange > 0
+                ? Math.min(1, Math.max(0, window.scrollY / totalRange))
+                : 0;
+
+            const fadeStart = 0.75; // эффект начинается с 75% прогресса фиксации
+            const t = Math.min(1, Math.max(0, (progress - fadeStart) / (1 - fadeStart)));
+
+            heroSticky.style.borderRadius = `${t * maxRadius}px`;
+            heroSticky.style.transform = `scale(${1 - t * maxShrink})`;
+        };
+
+        window.addEventListener('scroll', applyCardEffect, { passive: true });
+        applyCardEffect();
+    }
+
     // Видео "скраббится" по скроллу: вниз — вперёд, вверх — назад
     const bgVideo = document.getElementById('bg-video');
     if (bgVideo) {

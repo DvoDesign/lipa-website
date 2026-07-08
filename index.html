@@ -509,7 +509,208 @@ body {
 .cursor-ring-outline.expanded {
     border-color: rgba(255, 255, 255, 0.15);
 }
+
+/* ===== Product section (02) ===== */
+.product-section {
+    position: relative;
+    margin-top: 100vh;
+    min-height: 100vh;
+    background-color: #000000;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 4rem 3rem;
+}
+.product-visual {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 68vw;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+.product-visual img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    object-fit: contain;
+}
+.product-text {
+    position: relative;
+    z-index: 2;
+    max-width: 460px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.product-text.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+.product-label {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1.6rem;
+    font-family: 'Outfit', sans-serif;
+}
+.product-label .num {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.05em;
+}
+.product-label .label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+}
+.product-title {
+    font-family: 'General Sans', -apple-system, sans-serif;
+    font-size: clamp(1.9rem, 3.2vw, 2.4rem);
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.3rem;
+}
+.product-title .accent {
+    color: #39FF14;
+}
+.product-desc {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 2rem;
+    max-width: 320px;
+}
+.product-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    border-radius: 9999px;
+    padding: 0.4rem 0.4rem 0.4rem 1.6rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.product-btn:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+.product-btn .icon-circle {
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.product-card {
+    position: absolute;
+    right: 3rem;
+    bottom: 6.5rem;
+    z-index: 2;
+    width: 280px;
+    background: rgba(20, 20, 20, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 1.6rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+.product-card.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+.product-card h3 {
+    font-family: 'General Sans', -apple-system, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 0.7rem;
+}
+.product-card p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1.1rem;
+}
+.product-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #39FF14;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(57, 255, 20, 0.4);
+    padding-bottom: 2px;
+}
+.product-card .card-arrow {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background-color: rgba(57, 255, 20, 0.15);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.product-pagination {
+    position: absolute;
+    right: 3rem;
+    bottom: 3rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Outfit', sans-serif;
+}
+.product-pagination button {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.product-pagination button:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+.product-pagination .page-count {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    min-width: 2.5rem;
+    text-align: center;
+}
 </style>
+
 </head>
 <body>
 
@@ -595,6 +796,48 @@ body {
     <span class="cursor-card-text"><span class="text-white">Say</span> Hello!</span>
 </div>
 
+<section class="product-section">
+    <div class="product-visual">
+        <img src="product-conveyor.png" alt="Продукция LIPA Group">
+    </div>
+
+    <div class="product-text">
+        <div class="product-label">
+            <span class="num">02</span>
+            <span class="label">Продукция</span>
+        </div>
+        <h2 class="product-title">Мы превращаем <br> идеи <span class="accent">в продукт</span></h2>
+        <p class="product-desc">Создаём упаковку и полиграфию любой сложности — от идеи до готового тиража.</p>
+        <button class="product-btn">
+            <span>Смотреть всю продукцию</span>
+            <span class="icon-circle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </span>
+        </button>
+    </div>
+
+    <div class="product-card">
+        <h3>Бумажный пакет</h3>
+        <p>Премиальное решение для вашего бренда. Экологичные материалы и высокое качество печати.</p>
+        <a href="#">
+            Подробнее
+            <span class="card-arrow">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </span>
+        </a>
+    </div>
+
+    <div class="product-pagination">
+        <button class="page-prev" aria-label="Предыдущий">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <span class="page-count">1 / 4</span>
+        <button class="page-next" aria-label="Следующий">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+    </div>
+</section>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     // Видео стоит на паузе и воспроизводится только во время скролла
@@ -610,6 +853,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 bgVideo.pause();
             }, 150);
         }, { passive: true });
+    }
+
+    // Появление блока "02 Продукция" при скролле
+    const revealTargets = document.querySelectorAll('.product-text, .product-card');
+    if (revealTargets.length) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, { threshold: 0.25 });
+        revealTargets.forEach((el) => revealObserver.observe(el));
+    }
+
+    // Простая пагинация (визуальная, циклический счётчик 1-4)
+    const pageCount = document.querySelector('.page-count');
+    const pagePrev = document.querySelector('.page-prev');
+    const pageNext = document.querySelector('.page-next');
+    if (pageCount && pagePrev && pageNext) {
+        let currentPage = 1;
+        const totalPages = 4;
+        const updatePageCount = () => {
+            pageCount.textContent = `${currentPage} / ${totalPages}`;
+        };
+        pageNext.addEventListener('click', () => {
+            currentPage = currentPage === totalPages ? 1 : currentPage + 1;
+            updatePageCount();
+        });
+        pagePrev.addEventListener('click', () => {
+            currentPage = currentPage === 1 ? totalPages : currentPage - 1;
+            updatePageCount();
+        });
     }
 
     const logoText = document.querySelector('.footer-logo-text');

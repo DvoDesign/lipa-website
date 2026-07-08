@@ -16,17 +16,7 @@ body {
     position: relative;
 }
 
-#top-gradient {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 18vh;
-    display: block;
-    z-index: 0;
-    pointer-events: none;
-    background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0) 100%);
-}
+
 
 .site-header {
     position: fixed;
@@ -137,6 +127,7 @@ body {
     color: rgba(255, 255, 255, 0.55);
     letter-spacing: 0.02em;
     margin-top: 1.4rem;
+    white-space: nowrap;
 }
 .hero-subtitle .dot {
     margin: 0 0.5rem;
@@ -491,7 +482,7 @@ body {
 </head>
 <body>
 
-<div id="top-gradient"></div>
+
 
 <header class="site-header">
     <div class="logo">
@@ -549,12 +540,7 @@ body {
             </a>
         </div>
 
-        <nav class="footer-links">
-            <a href="#about" class="footer-link">About</a>
-            <a href="#features" class="footer-link">Features</a>
-            <a href="#pricing" class="footer-link">Pricing</a>
-            <a href="#contact" class="footer-link">Contact</a>
-        </nav>
+
 
         <div class="footer-copyright">
             © 2026 LipaGroup

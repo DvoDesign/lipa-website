@@ -759,6 +759,9 @@ body {
         font-size: 0.95rem;
         white-space: nowrap;
     }
+    .site-footer {
+        padding: 2.4rem 1.4rem 2rem;
+    }
     .product-text {
         max-width: 100%;
         order: 1;
@@ -950,8 +953,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Видео "скраббится" по скроллу: вниз — вперёд, вверх — назад, плавно через rAF-интерполяцию
+    // На мобильных пока просто обычное зацикленное видео, без скролл-скраббинга
     const bgVideo = document.getElementById('bg-video');
-    if (bgVideo) {
+    const isMobileVideo = window.matchMedia('(max-width: 768px)').matches;
+
+    if (bgVideo && isMobileVideo) {
+        bgVideo.loop = true;
+        bgVideo.play().catch(() => {});
+    } else if (bgVideo) {
         // На мобильных (особенно iOS Safari) видео не рисует первый кадр,
         // пока не был вызван play() хотя бы раз — поэтому сразу play() и тут же pause()
         const primeFirstFrame = () => {

@@ -902,24 +902,42 @@ document.addEventListener('DOMContentLoaded', () => {
         applyCardEffect();
     }
 
-    // Видео "скраббится" по скроллу: вниз — вперёд, вверх — назад
+    // Видео "скраббится" по скроллу: вниз — вперёд, вверх — назад, плавно через rAF-интерполяцию
     const bgVideo = document.getElementById('bg-video');
     if (bgVideo) {
         bgVideo.pause();
-        let lastScrollY = window.scrollY;
+        let targetTime = 0;
+        let displayedTime = 0;
+        let videoReady = false;
         const scrubSecondsPerPixel = 0.0025;
+        const smoothing = 0.15; // чем меньше, тем плавнее (и тем больше инерция)
+
+        bgVideo.addEventListener('loadedmetadata', () => {
+            videoReady = true;
+        });
 
         window.addEventListener('scroll', () => {
-            if (!bgVideo.duration || isNaN(bgVideo.duration)) return;
+            if (!videoReady || !bgVideo.duration || isNaN(bgVideo.duration)) return;
 
-            const currentScrollY = window.scrollY;
-            const delta = currentScrollY - lastScrollY;
-            lastScrollY = currentScrollY;
-
-            let newTime = bgVideo.currentTime + delta * scrubSecondsPerPixel;
-            newTime = Math.max(0, Math.min(bgVideo.duration, newTime));
-            bgVideo.currentTime = newTime;
+            targetTime += (window.scrollY - (window.__lastScrollYForVideo || 0)) * scrubSecondsPerPixel;
+            targetTime = Math.max(0, Math.min(bgVideo.duration, targetTime));
+            window.__lastScrollYForVideo = window.scrollY;
         }, { passive: true });
+        window.__lastScrollYForVideo = window.scrollY;
+
+        const smoothScrub = () => {
+            if (videoReady && bgVideo.duration && !isNaN(bgVideo.duration)) {
+                displayedTime += (targetTime - displayedTime) * smoothing;
+                if (Math.abs(targetTime - displayedTime) < 0.004) {
+                    displayedTime = targetTime;
+                }
+                if (Math.abs(bgVideo.currentTime - displayedTime) > 0.008) {
+                    bgVideo.currentTime = displayedTime;
+                }
+            }
+            requestAnimationFrame(smoothScrub);
+        };
+        requestAnimationFrame(smoothScrub);
     }
 
     // Появление блока "02 Продукция" при скролле

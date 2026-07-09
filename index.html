@@ -851,7 +851,7 @@ body {
 <div id="cursor-ring" class="cursor-ring-outline"></div>
 
 <div id="glass-card" class="glass-cursor-card">
-    <span class="cursor-card-text"><span class="text-white">Say</span> Hello!</span>
+    <span class="cursor-card-text"><span class="text-white">Print</span> IT!</span>
 </div>
 
 <section class="product-section">
@@ -875,8 +875,8 @@ body {
     </div>
 
     <div class="product-card">
-        <h3>Бумажный пакет</h3>
-        <p>Премиальное решение для вашего бренда. Экологичные материалы и высокое качество печати.</p>
+        <h3 class="card-title">Полиграфия</h3>
+        <p class="card-desc">Буклеты, каталоги и визитки. Точная цветопередача и премиальная бумага.</p>
         <a href="#">
             Подробнее
             <span class="card-arrow">
@@ -1024,23 +1024,46 @@ document.addEventListener('DOMContentLoaded', () => {
         revealTargets.forEach((el) => revealObserver.observe(el));
     }
 
-    // Простая пагинация (визуальная, циклический счётчик 1-4)
+    // Пагинация переключает контент карточки между 4 направлениями продукции
     const pageCount = document.querySelector('.page-count');
     const pagePrev = document.querySelector('.page-prev');
     const pageNext = document.querySelector('.page-next');
-    if (pageCount && pagePrev && pageNext) {
+    const cardTitle = document.querySelector('.card-title');
+    const cardDesc = document.querySelector('.card-desc');
+    if (pageCount && pagePrev && pageNext && cardTitle && cardDesc) {
+        const cards = [
+            { title: 'Полиграфия', desc: 'Буклеты, каталоги и визитки. Точная цветопередача и премиальная бумага.' },
+            { title: 'Упаковка', desc: 'Коробки, пакеты и этикетки под ваш бренд. Экологичные материалы, любые тиражи.' },
+            { title: 'Швейное производство', desc: 'Пошив изделий любой сложности. Контроль качества на каждом этапе.' },
+            { title: 'Фулфилмент', desc: 'Хранение, сборка и отправка заказов. Берём логистику на себя.' }
+        ];
         let currentPage = 1;
-        const totalPages = 4;
-        const updatePageCount = () => {
+        const totalPages = cards.length;
+
+        const renderCard = () => {
+            const card = cards[currentPage - 1];
+            const cardEl = document.querySelector('.product-card');
+            if (cardEl) {
+                cardEl.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+                cardEl.style.opacity = '0';
+                cardEl.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    cardTitle.textContent = card.title;
+                    cardDesc.textContent = card.desc;
+                    cardEl.style.opacity = '1';
+                    cardEl.style.transform = 'translateY(0)';
+                }, 200);
+            }
             pageCount.textContent = `${currentPage} / ${totalPages}`;
         };
+
         pageNext.addEventListener('click', () => {
             currentPage = currentPage === totalPages ? 1 : currentPage + 1;
-            updatePageCount();
+            renderCard();
         });
         pagePrev.addEventListener('click', () => {
             currentPage = currentPage === 1 ? totalPages : currentPage - 1;
-            updatePageCount();
+            renderCard();
         });
     }
 

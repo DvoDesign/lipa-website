@@ -830,7 +830,7 @@ body {
 
 
 <div class="video-container">
-    <video muted playsinline loop id="bg-video">
+    <video muted playsinline loop preload="auto" id="bg-video">
         <source src="video.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
     </video>
@@ -947,7 +947,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Видео "скраббится" по скроллу: вниз — вперёд, вверх — назад, плавно через rAF-интерполяцию
     const bgVideo = document.getElementById('bg-video');
     if (bgVideo) {
-        bgVideo.pause();
+        // На мобильных (особенно iOS Safari) видео не рисует первый кадр,
+        // пока не был вызван play() хотя бы раз — поэтому сразу play() и тут же pause()
+        const primeFirstFrame = () => {
+            const playPromise = bgVideo.play();
+            if (playPromise && playPromise.then) {
+                playPromise.then(() => bgVideo.pause()).catch(() => {});
+            } else {
+                bgVideo.pause();
+            }
+        };
+        if (bgVideo.readyState >= 2) {
+            primeFirstFrame();
+        } else {
+            bgVideo.addEventListener('loadeddata', primeFirstFrame, { once: true });
+        }
+
         let targetTime = 0;
         let displayedTime = 0;
         let videoReady = false;

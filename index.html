@@ -755,6 +755,10 @@ body {
     .hero-subtitle .dot {
         margin: 0 0.25rem;
     }
+    .footer-title {
+        font-size: 0.95rem;
+        white-space: nowrap;
+    }
     .product-text {
         max-width: 100%;
         order: 1;
@@ -831,6 +835,7 @@ body {
 
 <div class="video-container">
     <video muted playsinline loop preload="auto" id="bg-video">
+        <source src="video-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
         <source src="video.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
     </video>
